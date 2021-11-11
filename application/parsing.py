@@ -1,5 +1,5 @@
 import re
-import pprint
+from pprint import pprint
 
 PHONE_SEARCH_PATTERN = r'(\+7|8)*[\s\(]*(\d{3})[\)\s-]*(\d{3})[-]*(\d{2})[-]*(\d{2})[\s\(]*(доб\.)*[\s]*(\d+)*[\)]*'
 PHONE_SUB_PATTERN = r'8(\2)\3-\4-\5 \6\7'
