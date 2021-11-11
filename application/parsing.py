@@ -1,7 +1,8 @@
 import re
+import pprint
 
 PHONE_SEARCH_PATTERN = r'(\+7|8)*[\s\(]*(\d{3})[\)\s-]*(\d{3})[-]*(\d{2})[-]*(\d{2})[\s\(]*(доб\.)*[\s]*(\d+)*[\)]*'
-PHONE_SUB_PATTERN = r'+7(\2)-\3-\4-\5 \6\7'
+PHONE_SUB_PATTERN = r'8(\2)\3-\4-\5 \6\7'
 
 def read_raw_data(data):
     result = list()
@@ -15,6 +16,7 @@ def read_raw_data(data):
         record.append(re.sub(PHONE_SEARCH_PATTERN, PHONE_SUB_PATTERN, row[5]).strip())
         record.append(row[6])
         result.append(record)
+   
     return result
 
 def true_contact_list(data):
@@ -28,3 +30,4 @@ def merge_doubl(record_one, record_two):
     for index in range(len(record_one)):
         result.append(record_one[index]) if record_one[index] else result.append(record_two[index])
     return result
+
